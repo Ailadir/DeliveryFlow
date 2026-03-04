@@ -1,3 +1,5 @@
+import React from 'react'
+
 interface StepIndicatorProps {
   currentStep: 1 | 2 | 3
 }
@@ -15,14 +17,13 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
         const done = step.n < currentStep
         const active = step.n === currentStep
         return (
-          <>
+          <React.Fragment key={step.n}>
             {i > 0 && (
               <div
-                key={`line-${i}`}
                 className={`flex-1 h-0.5 mt-4 mx-2 transition-colors ${i < currentStep ? 'bg-blue-600' : 'bg-border'}`}
               />
             )}
-            <div key={step.n} className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-1">
               <div
                 className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold transition-colors
                   ${done ? 'bg-blue-600 text-white' : active ? 'bg-blue-600 text-white ring-4 ring-blue-600/20' : 'bg-surface text-text/40 border border-border'}`}
@@ -42,7 +43,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                 {step.short}
               </span>
             </div>
-          </>
+          </React.Fragment>
         )
       })}
     </div>

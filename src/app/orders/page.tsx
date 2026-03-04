@@ -26,10 +26,7 @@ export default function OrdersPage() {
       result = result.filter(
         (o) =>
           o.receiver.name.toLowerCase().includes(q) ||
-          o.receiver.city.toLowerCase().includes(q) ||
-          o.sender.name.toLowerCase().includes(q) ||
-          o.sender.city.toLowerCase().includes(q) ||
-          o.sender.phone.toLowerCase().includes(q)
+          o.receiver.city.toLowerCase().includes(q)
       )
     }
     return result
