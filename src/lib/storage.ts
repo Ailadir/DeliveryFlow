@@ -18,7 +18,7 @@ export function setItem<T>(key: string, value: T): void {
   try {
     localStorage.setItem(key, JSON.stringify(value))
   } catch {
-    // storage quota exceeded or unavailable
+    // Обработка ошибки
   }
 }
 
@@ -26,6 +26,6 @@ export function removeItem(key: string): void {
   try {
     localStorage.removeItem(key)
   } catch {
-    // unavailable
+    // Обработка ошибки
   }
 }

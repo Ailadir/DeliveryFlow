@@ -11,6 +11,23 @@ interface Step1SenderProps {
   onNext: (data: SenderInfo) => void
 }
 
+function formatPhoneInput(raw: string): string {
+  const digits = raw.replace(/\D/g, '')
+  if (digits.length === 0) return ''
+
+  const normalized =
+    digits[0] === '8' || digits[0] === '7' ? '7' + digits.slice(1) : '7' + digits
+  const d = normalized.slice(0, 11)
+
+  let result = '+7'
+  if (d.length > 1) result += ` (${d.slice(1, 4)}`
+  if (d.length >= 4) result += ')'
+  if (d.length > 4) result += ` ${d.slice(4, 7)}`
+  if (d.length > 7) result += `-${d.slice(7, 9)}`
+  if (d.length > 9) result += `-${d.slice(9, 11)}`
+  return result
+}
+
 export function Step1Sender({ initial, onNext }: Step1SenderProps) {
   const [values, setValues] = useState<Partial<Step1Data>>({
     name: initial.name ?? '',
@@ -56,7 +73,8 @@ export function Step1Sender({ initial, onNext }: Step1SenderProps) {
         label="Телефон"
         placeholder="+7 (999) 123-45-67"
         value={values.phone ?? ''}
-        onChange={(e) => handleChange('phone', e.target.value)}
+        inputMode="tel"
+        onChange={(e) => handleChange('phone', formatPhoneInput(e.target.value))}
         error={errors.phone}
       />
       <Input
