@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #111827;
+  --surface: #f3f4f6;
+  --border: #e5e7eb;
+}
+
+.dark {
+  --bg: #111827;
+  --text: #f9fafb;
+  --surface: #1f2937;
+  --border: #374151;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
