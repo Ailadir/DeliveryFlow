@@ -109,7 +109,7 @@ export function Step2Receiver({ initial, senderCity, onNext, onBack }: Step2Rece
       />
       <div className="flex justify-between pt-2">
         <Button type="button" variant="secondary" onClick={onBack}>
-          ← Назад
+          <span className="sm:hidden">←</span><span className="hidden sm:inline">← Назад</span>
         </Button>
         <Button type="submit">Далее →</Button>
       </div>

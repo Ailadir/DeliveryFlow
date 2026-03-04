@@ -18,7 +18,7 @@ export function OrderSearch({ value, onChange }: OrderSearchProps) {
 
   return (
     <Input
-      placeholder="Поиск по получателю или городу..."
+      placeholder="Поиск по отправителю, получателю, городу или телефону..."
       value={local}
       onChange={(e) => setLocal(e.target.value)}
     />

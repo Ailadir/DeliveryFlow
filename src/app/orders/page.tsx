@@ -26,7 +26,10 @@ export default function OrdersPage() {
       result = result.filter(
         (o) =>
           o.receiver.name.toLowerCase().includes(q) ||
-          o.receiver.city.toLowerCase().includes(q)
+          o.receiver.city.toLowerCase().includes(q) ||
+          o.sender.name.toLowerCase().includes(q) ||
+          o.sender.city.toLowerCase().includes(q) ||
+          o.sender.phone.toLowerCase().includes(q)
       )
     }
     return result
@@ -51,7 +54,10 @@ export default function OrdersPage() {
           <p className="text-sm text-text/60 mt-0.5">{orders.length} заявок всего</p>
         </div>
         <Link href="/">
-          <Button>+ Новая заявка</Button>
+          <Button>
+            <span className="sm:hidden">+</span>
+            <span className="hidden sm:inline">+ Новая заявка</span>
+          </Button>
         </Link>
       </div>
 

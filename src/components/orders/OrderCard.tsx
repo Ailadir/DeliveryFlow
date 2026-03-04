@@ -1,21 +1,11 @@
 import Link from 'next/link'
 import type { Order } from '@/lib/types'
-import { CARGO_TYPE_LABELS, ORDER_STATUS_LABELS, formatDate } from '@/lib/utils'
+import { CARGO_TYPE_LABELS, ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, formatDate } from '@/lib/utils'
 import { Button } from '@/components/ui/Button'
 
 interface OrderCardProps {
   order: Order
   onDelete: (id: string) => void
-}
-
-const statusColors: Record<string, string> = {
-  PENDING: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400',
-  PROCESSING: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-  COLLECTING: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400',
-  READY_TO_SHIP: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400',
-  IN_TRANSIT: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
-  DELIVERED: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-  CANCELLED: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
 }
 
 export function OrderCard({ order, onDelete }: OrderCardProps) {
@@ -28,7 +18,7 @@ export function OrderCard({ order, onDelete }: OrderCardProps) {
             {order.sender.city} → {order.receiver.city}
           </p>
         </div>
-        <span className={`px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${statusColors[order.status]}`}>
+        <span className={`px-2 py-0.5 rounded-full text-xs font-medium flex-shrink-0 ${ORDER_STATUS_COLORS[order.status]}`}>
           {ORDER_STATUS_LABELS[order.status]}
         </span>
       </div>

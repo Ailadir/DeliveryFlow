@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useOrdersStore } from '@/hooks/useOrdersStore'
 import { Button } from '@/components/ui/Button'
-import { CARGO_TYPE_LABELS, ORDER_STATUS_LABELS, formatDate, formatPhone } from '@/lib/utils'
+import { CARGO_TYPE_LABELS, ORDER_STATUS_LABELS, ORDER_STATUS_COLORS, formatDate, formatPhone } from '@/lib/utils'
 import type { Order } from '@/lib/types'
 
 export default function OrderDetailPage() {
@@ -44,14 +44,14 @@ export default function OrderDetailPage() {
           <p className="text-sm text-text/60 mt-0.5">{formatDate(order.createdAt)}</p>
         </div>
         <Button variant="secondary" onClick={() => router.back()}>
-          ← Назад
+          <span className="sm:hidden">←</span><span className="hidden sm:inline">← Назад</span>
         </Button>
       </div>
 
       <div className="rounded-2xl border border-border bg-bg p-6 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <h2 className="font-semibold text-text">Статус заявки</h2>
-          <span className="px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+          <span className={`px-3 py-1 rounded-full text-sm font-medium ${ORDER_STATUS_COLORS[order.status]}`}>
             {ORDER_STATUS_LABELS[order.status]}
           </span>
         </div>

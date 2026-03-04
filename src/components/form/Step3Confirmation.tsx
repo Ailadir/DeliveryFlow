@@ -62,7 +62,7 @@ export function Step3Confirmation({ sender, receiver, onSubmit, onBack }: Step3C
 
       <div className="flex justify-between pt-2">
         <Button type="button" variant="secondary" onClick={onBack}>
-          ← Назад
+          <span className="sm:hidden">←</span><span className="hidden sm:inline">← Назад</span>
         </Button>
         <Button type="submit">Отправить заявку</Button>
       </div>

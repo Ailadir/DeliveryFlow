@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import { MobileMenu } from './MobileMenu'
 
 export function Header() {
   return (
@@ -11,7 +12,8 @@ export function Header() {
         >
           HappyPhone
         </Link>
-        <nav className="flex items-center gap-1">
+
+        <nav className="hidden sm:flex items-center gap-1">
           <Link
             href="/"
             className="rounded-lg px-3 py-1.5 text-sm font-medium text-text/70 hover:text-text hover:bg-surface transition-colors"
@@ -28,6 +30,10 @@ export function Header() {
             <ThemeSwitcher />
           </div>
         </nav>
+
+        <div className="flex sm:hidden items-center">
+          <MobileMenu />
+        </div>
       </div>
     </header>
   )
